@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    {% if title == "Student Info" %} Howvard | {{ title }}
+    {% elif title == "Grades" %} Howvard | {{ title }}
+    {% elif title == "Deans Lister" %} Howvard | {{ title }}
+    {% endif %}
+  </title>
+
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+  <div class="container">
+    <aside>
+      <nav>
+        <ul>
+          <p>Howvard University</p>
+          <hr />
+          <li><a href="{% url 'studentInfo' %}"> Student Info </a></li>
+          <hr />
+          <li><a href="{% url 'grade' %}"> Grades </a></li>
+          <hr />
+          <li><a href="{% url 'dl' %}"> Deans Lister </a></li>
+          <hr />
+          <!-- <li><a href="{% url 'dl' %}"> About Us </a></li>
+          <hr />
+          <li><a href="{% url 'dl' %}"> Contacts </a></li>
+          <hr /> -->
+        </ul>
+      </nav>
+    </aside>
+    <main>
+      {% block content %}
+
+
+      {% endblock %}
+    </main>
+  </div>
+</body>
+</html>

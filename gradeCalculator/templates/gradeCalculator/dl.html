@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  /* styles.css */
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+  }
+
+  .custom-table th, .custom-table td {
+    border: 1px solid #ddd;
+    padding: 18px;
+    text-align: center;
+  }
+
+  .custom-table th {
+    background-color: #A51C30;
+    color: white;
+    padding: 12px;
+    min-width: 120px;
+  }
+
+  .no-data {
+    text-align: center;
+  }
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  h1 {
+    text-align: center;
+    font-size: 60px;
+    padding-bottom: 50px;
+  }
+</style>
+
+<div class="container">
+  
+  <div class="table-container">
+    <h1 class="mb-4">DEAN'S LIST</h1>  
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Last Name</th>
+          <th>First Name</th>
+          <th>Section</th>
+          <th>Average</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for dl in deans_list %}
+        
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ dl.student.lastName }}</td>
+          <td>{{ dl.student.firstName }}</td>
+          <td>{{ dl.section }}</td>
+          <td>{{ dl.average_grade }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="4" class="no-data">No students on the Dean's List</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
